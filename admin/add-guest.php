@@ -73,7 +73,7 @@ if (isset($_POST["submit"])){
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <title>Add Guest</title>
 </head>
 <body>
@@ -84,10 +84,8 @@ if (isset($_POST["submit"])){
     <div class="form-container">
       <div class="form-content">
         <!-- Form Heading and global errors section-->
-        <div class = "header text-center">
-          <h1 class="dark">Sign Up</h1>
-          <p class="log-reg-success"><?php echo $_GET["msg"]; ?></p>
-          <p class="log-reg-error"><?php echo $errors['userExist']; echo $errors['passwordMatch']; ?></p>
+        <div class = "header">
+          <h1 class="text-3xl font-bold text-center underline">Add Guest</h1>
         </div>
 
         <!-- Sign Up Form -->
@@ -95,7 +93,7 @@ if (isset($_POST["submit"])){
           <ul class="registration">
             <!-- Fullname -->
             <li>
-              <label for="fullname">Fullname</label>
+              <label for="fullname" class="border-2 border-solid rounded-small border-blue-800">Fullname</label>
               <input type="text" name="fullname" id="fullname" value="<?php echo htmlspecialchars($fullname)?>">
               <!-- <span><p class="log-reg-error"><?php //echo $errors['fullname'];?></p></span> -->
             </li>
