@@ -1,6 +1,6 @@
 <?php
 // Variables to make inputs persist in the form
-$fullname = $country = $status = $chartedFlight = $arrival = $departure = $affiliation = $commercialFlight = $accomodation = $transport = $passport = $covid = $miscellaneous = '';
+$fullname = $country = $status = $chartedFlight = $arrival = $departure = $affiliation = $commercialFlight = $accomodation = $transport = $passport = $covid = $miscellaneous = $invitedBy = $group = '';
 
 // Array to errors error messages
 $errors = array('fullname' => '', 'stmt'=>'');
@@ -21,6 +21,8 @@ if (isset($_POST["submit"])){
   $passport = ($_POST["passport"]);
   $covid = ($_POST["covid"]);
   $miscellaneous = ($_POST["miscellaneous"]);
+  $invitedBy = ($_POST["invited-by"]);
+  $group = ($_POST["group"]);
 
   // Connect to the database
   require_once('includes/database_inc.php');
@@ -82,18 +84,14 @@ if (isset($_POST["submit"])){
 
   <main>
     <div class="form-container">
-      <div class="form-content">
-        <!-- Form Heading and global errors section-->
-        <div class = "header">
-          <h1 class="text-3xl font-bold text-center underline">Add Guest</h1>
-        </div>
-
+    <h1 class="page-heading">Add Guest</h1>
+      <div class="form-content container">
         <!-- Sign Up Form -->
         <form action="add-guest.php" method="post">
-          <ul class="registration">
+          <ul class="add-guest">
             <!-- Fullname -->
             <li>
-              <label for="fullname" class="border-2 border-solid rounded-small border-blue-800">Fullname</label>
+              <label for="fullname">Fullname</label>
               <input type="text" name="fullname" id="fullname" value="<?php echo htmlspecialchars($fullname)?>">
               <!-- <span><p class="log-reg-error"><?php //echo $errors['fullname'];?></p></span> -->
             </li>
@@ -106,34 +104,41 @@ if (isset($_POST["submit"])){
             <li>
               <label for="status">Status</label>
               <select name="status" id="status">
-                <option value="">Normal</option>
-                <option value="Student">VIP</option>
+                <option value="normal">Normal</option>
+                <option value="vip">VIP</option>
               </select>
             </li>
             <!-- Charted Flight -->
             <li>
               <label for="charted-flight">Charted Flight</label>
-              <input type="text" name="charted-flight" id="charted-flight" value="<?php echo htmlspecialchars($chartedFlight)?>">
-            </li>
-            <!-- Arrival -->
-            <li>
-              <label for="arrival">Arrival</label>
-              <input type="text" name="arrival" id="arrival" value="<?php echo htmlspecialchars($arrival)?>">
-            </li>
-            <!-- Departure -->
-            <li>
-              <label for="departure">Departure</label>
-              <input type="text" name="departure" id="departure" value="<?php echo htmlspecialchars($departure)?>">
-            </li>
-            <!-- Affiliation -->
-            <li>
-              <label for="affiliation">Affiliation</label>
-              <input type="text" name="affiliation" id="affiliation" value="<?php echo htmlspecialchars($affiliation)?>">
+                  <div class="charted-flight">
+                    <span class="check-flight">
+                      <input type="radio" name="flight" id="yes" value="yes">Yes
+                    </span>    
+                    <span class="check-flight">
+                      <input type="radio" name="flight" id="no">No
+                    </span>
+                  </div>
             </li>
             <!-- Commercial Flight -->
             <li>
               <label for="commercial-flight">Commercial Flight</label>
               <input type="text" name="commercial-flight" id="commercial-flight" value="<?php echo htmlspecialchars($commercialFlight)?>">
+            </li>
+            <!-- Arrival -->
+            <li>
+              <label for="arrival">Arrival</label>
+              <input type="date" name="arrival" id="arrival" value="<?php echo htmlspecialchars($arrival)?>">
+            </li>
+            <!-- Departure -->
+            <li>
+              <label for="departure">Departure</label>
+              <input type="date" name="departure" id="departure" value="<?php echo htmlspecialchars($departure)?>">
+            </li>
+            <!-- Affiliation -->
+            <li>
+              <label for="affiliation">Affiliation</label>
+              <input type="text" name="affiliation" id="affiliation" value="<?php echo htmlspecialchars($affiliation)?>">
             </li>
             <!-- Accomodation -->
             <li>
@@ -148,18 +153,59 @@ if (isset($_POST["submit"])){
             <!-- Passport -->
             <li>
               <label for="passport">Passport</label>
-              <input type="text" name="passport" id="passport" value="<?php echo htmlspecialchars($passport)?>">
+              <div class="passport">
+                <span class="check-passport">
+                  <input type="radio" name="passport" id="yes" value="yes">Yes
+                </span>
+                <span class="check-passport">
+                  <input type="radio" name="passport" id="no">No
+                </span>
+              </div>
             </li>
             <!-- Covid -->
             <li>
               <label for="covid">Covid</label>
-              <input type="text" name="covid" id="covid" value="<?php echo htmlspecialchars($covid)?>">
+              <div class="covid">
+                <span class="check-covid">
+                  <input type="radio" name="covid" id="yes" value="yes">Yes
+                </span>
+                <span class="check-covid">
+                  <input type="radio" name="covid" id="no">No
+                </span>
             </li>
             <!-- Miscellaneous -->
             <li>
               <label for="miscellaneous">Miscellaneous</label>
               <input type="text" name="miscellaneous" id="miscellaneous" value="<?php echo htmlspecialchars($miscellaneous)?>">
             </li>
+            <!-- Invited by -->
+            <li>
+              <label for="invited-by">Invited By</label>
+              <input type="text" name="invited-by" id="invited-by" value="<?php echo htmlspecialchars($invitedBy)?>">
+            </li>
+            <!-- Group -->
+            <li>
+              <label for="group">Group</label>
+              <select name="group" id="group">
+                <option value="">Select Group</option>
+                <option value="AUC Namibia">AUC Namibia</option>
+                <option value="AUC Durban">AUC Durban</option>
+                <option value="AUC Cape Town">AUC Cape Town</option>
+                <option value="Events Manageer / Comm Members">Events Manager/Comm Members</option>
+                <option value="Directors">Directors</option>
+                <option value="Chairman's Office">Chairman's Office</option>
+                <option value="AU Commercial Investments">AU Commercial Investments</option>
+                <option value="AU Food Security">AU Food Security</option>
+                <option value="AU Aviation">AU Aviation</option>
+                <option value="AU Health">AU Health</option>
+                <option value="AU Technologies">AU Technogies</option>
+                <option value="AU Admin">AU Admin</option>
+                <option value="AU Commodity House">AU Commodity House</option>
+                <option value="AU Travel">AU Travel</option>
+                <option value="QPay">QPay</option>
+                <option value="AU Consultants">AU Consultants</option>
+                <option value="RSA International Guests">RSA International Guests</option>
+              </select>
           </ul>
           <!-- Submit button -->
           <input type="submit" name="submit" value="Add Guest">
