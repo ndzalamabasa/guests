@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS countries(
+  countryID INT AUTO_INCREMENT,
+  countryName VARCHAR(50) NOT NULL,
+  PRIMARY KEY(countryID)
+);
+
+CREATE TABLE IF NOT EXISTS flight(
+  flightID INT AUTO_INCREMENT,
+  commercialFlight VARCHAR(50) NOT NULL,
+  PRIMARY KEY(flightID)
+);
+
+CREATE TABLE IF NOT EXISTS inviters(
+  invitorID INT AUTO_INCREMENT,
+  invitorName VARCHAR(50) NOT NULL,
+  PRIMARY KEY(invitorID)
+);
+
+CREATE TABLE IF NOT EXISTS guest_status(
+  statusID INT AUTO_INCREMENT,
+  status VARCHAR(50) NOT NULL,
+  PRIMARY KEY(statusID)
+);
+
