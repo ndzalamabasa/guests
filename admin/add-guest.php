@@ -93,37 +93,79 @@ if (isset($_POST["submit"])){
             <li>
               <label for="fullname">Fullname</label>
               <input type="text" name="fullname" id="fullname" value="<?php echo htmlspecialchars($fullname)?>">
-              <!-- <span><p class="log-reg-error"><?php //echo $errors['fullname'];?></p></span> -->
+              <span><p class="log-reg-error"><?php echo $errors['fullname'];?></p></span>
             </li>
             <!-- Country -->
             <li>
               <label for="country">Country</label>
-              <input type="text" name="country" id="country" value="<?php echo htmlspecialchars($country)?>">
+              <select name="country" id="country">
+                <option value="">Select Country</option>
+                <option value="1">USA</option>
+                <option value="2">Cape Town, RSA</option>
+                <option value="3">Durban, RSA</option>
+                <option value="4">RSA</option>
+                <option value="5">Senegal</option>
+                <option value="6">Kenya</option>
+                <option value="7">Namibia</option>
+                <option value="8">DRC</option>
+                <option value="9">Ghana</option>
+                <option value="10">UK</option>
+                <option value="11">Dubai, UAE</option>
+                <option value="12">Scotland</option>
+                <option value="13">Choma, Zambia</option>
+                <option value="14">Kabwe, Zambia</option>
+                <option value="15">Ndola, Zambia</option>
+                <option value="16">Petauke, Zambia</option>
+                <option value="17">Livingstone</option>
+                <option value="18">Lusaka, Zambia</option>
+                <option value="19">Zambia</option>
+                <option value="20">Zimbabwe</option>
+                <option value="21">Bulgaria</option>
+                <option value="22">Nigeria</option>
+                <option value="23">Italy</option>
+              </select>
             </li>
             <!-- Status -->
             <li>
               <label for="status">Status</label>
               <select name="status" id="status">
-                <option value="normal">Normal</option>
-                <option value="vip">VIP</option>
+                <option value="Normal">Normal</option>
+                <option value="VIP">VIP</option>
               </select>
             </li>
             <!-- Charted Flight -->
             <li>
               <label for="charted-flight">Charted Flight</label>
-                  <div class="charted-flight">
-                    <span class="check-flight">
-                      <input type="radio" name="flight" id="yes" value="yes">Yes
-                    </span>    
-                    <span class="check-flight">
-                      <input type="radio" name="flight" id="no">No
-                    </span>
-                  </div>
+              <div class="charted-flight">
+                <span class="check-flight">
+                  <input type="radio" name="flight" id="yes" value="yes">Yes
+                </span>    
+                <span class="check-flight">
+                  <input type="radio" name="flight" id="no" value="no">No
+                </span>
+              </div>
             </li>
             <!-- Commercial Flight -->
             <li>
               <label for="commercial-flight">Commercial Flight</label>
-              <input type="text" name="commercial-flight" id="commercial-flight" value="<?php echo htmlspecialchars($commercialFlight)?>">
+              <select name="commercial-flight" id="commercial-flight">
+                <option value="1">USA-RSA-RTN</option>
+                <option value="2">SENEGAL-RSA-RTN</option>
+                <option value="3">KENYA-RSA-RTN</option>
+                <option value="4">GHANA-RSA-RTN</option>
+                <option value="5">DUBAI-RSA-RTN</option>
+                <option value="6">UK-LUN-RTN</option>
+                <option value="7">USA-LUN-RTN</option>
+                <option value="8">SCOTLAND-LUN-RTN</option>
+                <option value="9">LVI-JNB-OW</option>
+                <option value="10">JNB-LVI-JNB-RTN</option>
+                <option value="11">JNB-LVI-LUN-JNB</option>
+                <option value="12">NYC-JNB-LVI-NYC</option>
+                <option value="13">NYC-LVI-NYC</option>
+                <option value="14">LUN-JNB-OW</option>
+                <option value="15">NYC-LUN-NYC</option>
+                <option value="16">NYC-DBX-JNB-NYC</option>
+              </select>
             </li>
             <!-- Arrival -->
             <li>
@@ -143,12 +185,18 @@ if (isset($_POST["submit"])){
             <!-- Accomodation -->
             <li>
               <label for="accomodation">Accomodation</label>
-              <input type="text" name="accomodation" id="accomodation" value="<?php echo htmlspecialchars($accomodation)?>">
+              <select name="accomodation" id="accomodation">
+                <option value="Yes">YES</option>
+                <option value="Yes-Sharing">YES-Sharing</option>
+              </select>
             </li>
             <!-- Transport -->
             <li>
               <label for="transport">Transport</label>
-              <input type="text" name="transport" id="transport" value="<?php echo htmlspecialchars($transport)?>">
+              <select name="transport" id="transport">
+                <option value="Yes">Yes</option>
+                <option value="By Road">By Road</option>
+              </select>
             </li>
             <!-- Passport -->
             <li>
@@ -158,7 +206,7 @@ if (isset($_POST["submit"])){
                   <input type="radio" name="passport" id="yes" value="yes">Yes
                 </span>
                 <span class="check-passport">
-                  <input type="radio" name="passport" id="no">No
+                  <input type="radio" name="passport" id="no" value="no">No
                 </span>
               </div>
             </li>
@@ -170,8 +218,9 @@ if (isset($_POST["submit"])){
                   <input type="radio" name="covid" id="yes" value="yes">Yes
                 </span>
                 <span class="check-covid">
-                  <input type="radio" name="covid" id="no">No
+                  <input type="radio" name="covid" id="no" value="no">No
                 </span>
+              </div>
             </li>
             <!-- Miscellaneous -->
             <li>
@@ -181,31 +230,40 @@ if (isset($_POST["submit"])){
             <!-- Invited by -->
             <li>
               <label for="invited-by">Invited By</label>
-              <input type="text" name="invited-by" id="invited-by" value="<?php echo htmlspecialchars($invitedBy)?>">
+              <select name="invited-by" id="invited-by">
+                <option value="">Select Inviter</option>
+                <option value="1">Mrs T.Ndambo</option>
+                <option value="2">Mrs Dos antos</option>
+                <option value="3">Matildah Pikiti</option>
+                <option value="4">Linda Mtonga</option>
+                <option value="5">Ms R.Ndambo</option>
+                <option value="6">Mrs A.Masebo</option>
+              </select>
             </li>
             <!-- Group -->
             <li>
               <label for="group">Group</label>
               <select name="group" id="group">
                 <option value="">Select Group</option>
-                <option value="AUC Namibia">AUC Namibia</option>
-                <option value="AUC Durban">AUC Durban</option>
-                <option value="AUC Cape Town">AUC Cape Town</option>
-                <option value="Events Manageer / Comm Members">Events Manager/Comm Members</option>
-                <option value="Directors">Directors</option>
-                <option value="Chairman's Office">Chairman's Office</option>
-                <option value="AU Commercial Investments">AU Commercial Investments</option>
-                <option value="AU Food Security">AU Food Security</option>
-                <option value="AU Aviation">AU Aviation</option>
-                <option value="AU Health">AU Health</option>
-                <option value="AU Technologies">AU Technogies</option>
-                <option value="AU Admin">AU Admin</option>
-                <option value="AU Commodity House">AU Commodity House</option>
-                <option value="AU Travel">AU Travel</option>
-                <option value="QPay">QPay</option>
-                <option value="AU Consultants">AU Consultants</option>
-                <option value="RSA International Guests">RSA International Guests</option>
+                <option value="1">AUC Namibia</option>
+                <option value="2">AUC Durban</option>
+                <option value="3">AUC Cape Town</option>
+                <option value="4">Events Manager/Comm Members</option>
+                <option value="5">Directors</option>
+                <option value="6">Chairman's Office</option>
+                <option value="7">AU Commercial Investments</option>
+                <option value="8">AU Food Security</option>
+                <option value="9">AU Aviation</option>
+                <option value="10">AU Health</option>
+                <option value="11">AU Technogies</option>
+                <option value="12">AU Admin</option>
+                <option value="13">AU Commodity House</option>
+                <option value="14">AU Travel</option>
+                <option value="15">QPay</option>
+                <option value="16">AU Consultants</option>
+                <option value="17">RSA International Guests</option>
               </select>
+            </li>
           </ul>
           <!-- Submit button -->
           <input type="submit" name="submit" value="Add Guest">
